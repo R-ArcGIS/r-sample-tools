@@ -1,7 +1,6 @@
 # case study using mclust package
 tool_exec <- function(in_params, out_prams)
 {
-  #message(getOption("repos"))
   if (!requireNamespace("sp", quietly = TRUE))
     install.packages("sp")
   if (!requireNamespace("mclust", quietly = TRUE))
@@ -10,22 +9,24 @@ tool_exec <- function(in_params, out_prams)
   require(sp)
 
   source_dataset = in_params[[1]]
-  nclust = NULL #in_params[[2]]
+  #nclust = in_params[[2]]
   out_table = out_prams[[1]]
   out_ellipses = out_prams[[2]]
   out_dens = out_prams[[3]]
   out_sim = out_prams[[4]]
-
   ### read data
   arc.progress_label("Loading Dataset")
-  data <- arc.select(arc.open(source_dataset))
+  d <- arc.open(source_dataset)
+  # read only OID field
+  data <- arc.select(d, names(d@fields[d@fields == "OID"]))
   data_shp <- arc.shape(data)
 
   data.xy <- cbind(data_shp$x, data_shp$y) # or data.frame(x=data_shp$x, y=data_shp$y)
 
   #########
   arc.progress_label("Bayesian Information Criterion for Model-Based Clustering...")
-  patternBIC <- mclustBIC(data.xy, G = nclust)
+  patternBIC <- mclustBIC(data.xy) # G = nclust)
+
   patternModel <- summary(patternBIC, data.xy)
   print(patternModel)
 
