@@ -1,7 +1,7 @@
-R Example Tools
-===============
+R Sample Tools
+==============
 
-<R_bridge@esri.com>
+[<R_bridge@esri.com>](mailto:R_bridge@esri.com)
 
 Sample ArcMap MXD and ArcGIS Pro Project
 
