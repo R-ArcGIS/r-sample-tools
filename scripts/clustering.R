@@ -1,5 +1,5 @@
 # case study using mclust package
-tool_exec <- function(in_params, out_prams)
+tool_exec <- function(in_params, out_params)
 {
   if (!requireNamespace("sp", quietly = TRUE))
     install.packages("sp")
@@ -10,10 +10,10 @@ tool_exec <- function(in_params, out_prams)
 
   source_dataset = in_params[[1]]
   #nclust = in_params[[2]]
-  out_table = out_prams[[1]]
-  out_ellipses = out_prams[[2]]
-  out_dens = out_prams[[3]]
-  out_sim = out_prams[[4]]
+  out_table = out_params[[1]]
+  out_ellipses = out_params[[2]]
+  out_dens = out_params[[3]]
+  out_sim = out_params[[4]]
   ### read data
   arc.progress_label("Loading Dataset")
   d <- arc.open(source_dataset)
