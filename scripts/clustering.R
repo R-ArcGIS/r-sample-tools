@@ -103,7 +103,7 @@ tool_exec <- function(in_params, out_params)
     arc.write(out_sim, data=list(id=1:length(sim.xy$x)), sim.xy, list(type='Point', WKT=arc.shapeinfo(data_shp)$WKT))
   }
   arc.progress_label("Done")
-  return(out_prams)
+  return(out_params)
 }
 
 simulation <- function(bestModel, n)
