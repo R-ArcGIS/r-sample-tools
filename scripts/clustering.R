@@ -81,13 +81,16 @@ tool_exec <- function(in_params, out_prams)
   if (!is.null(out_dens) && out_dens != "NA")
   {
     arc.progress_label("Calculating density...")
-    options(device="pdf")
+    tmp_file = tempfile("density", fileext = ".pdf")
     options(onefile=FALSE)
+    pdf(tmp_file)
+
     grid.n <- 100
     grid <- surfacePlot(verbose=T, data.xy, parameters = bestModel$parameters, type = "image", what = "density", grid=grid.n, nlevels = 8, transformation = "none", ask=F)
     dev.off()
     options(device="windows")
     options(onefile=NULL)
+    #file.remove(tmp_file)
     xy <-list(x = unlist(lapply(grid$x, function(x) rep(x, grid.n))),
               y = rep(grid$y, grid.n))
     arc.progress_label("Writing density dataset...")
