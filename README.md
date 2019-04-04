@@ -30,5 +30,5 @@ Model Based Clustering uses the [mclust package](http://www.stat.washington.edu/
 
 All tools depend on the R Statistical Computing Software:
 
-> Copyright (C) 2015 The R Foundation for Statistical Computing
+> Copyright (C) 2019 The R Foundation for Statistical Computing
 > R is free software and comes with ABSOLUTELY NO WARRANTY.
